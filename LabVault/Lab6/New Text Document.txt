@@ -1,0 +1,11 @@
+D% Name mein D shuru mein ayega
+%R%	R inbetween ayega
+
+_a%	Second character a hona chahiye
+D[a,o]%	2nd character a ya o ho
+
+Concat
+Substring	select SUBSTRING("HELLO WORLD",1,3) from Employees
+Replace		select REPLACE("EELLO",'EE',"HE")
+Date		select GETDATE(), DATENAME(year, GETDATE())
+
