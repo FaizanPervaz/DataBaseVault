@@ -1,0 +1,120 @@
+db.createCollection("Emp")
+
+db.Emp.insertMany([
+    {
+      EmpNo: 101,
+      Ename: "Faizan Pervaz",
+      Job: "Manager",
+      MGR: null,
+      HireDate: ISODate("2022-05-15"),
+      Sal: 70000.00,
+      Comm: null,
+      DeptNo: 10
+    },
+    {
+      EmpNo: 102,
+      Ename: "Haider Yar",
+      Job: "Developer",
+      MGR: 101,
+      HireDate: ISODate("2022-06-20"),
+      Sal: 60000.00,
+      Comm: 3000.00,
+      DeptNo: 20
+    },
+    {
+      EmpNo: 103,
+      Ename: "Musharib Nadeem",
+      Job: "Analyst",
+      MGR: 101,
+      HireDate: ISODate("2022-07-10"),
+      Sal: 55000.00,
+      Comm: null,
+      DeptNo: 30
+    },
+    {
+      EmpNo: 104,
+      Ename: "Umais",
+      Job: "Clerk",
+      MGR: 101,
+      HireDate: ISODate("2022-08-05"),
+      Sal: 45000.00,
+      Comm: null,
+      DeptNo: 10
+    },
+    {
+      EmpNo: 105,
+      Ename: "Rohan Joyeah",
+      Job: "Salesman",
+      MGR: 101,
+      HireDate: ISODate("2022-09-12"),
+      Sal: 50000.00,
+      Comm: 2000.00,
+      DeptNo: 20
+    },
+    {
+      EmpNo: 106,
+      Ename: "Farjad Shah",
+      Job: "Manager",
+      MGR: null,
+      HireDate: ISODate("2022-10-18"),
+      Sal: 75000.00,
+      Comm: null,
+      DeptNo: 30
+    }
+  ])
+  
+
+db.createCollection("Dept")
+
+db.Dept.insertMany([
+    {
+      DeptNo: 10,
+      Dname: "Marketing",
+      Loc: "New York"
+    },
+    {
+      DeptNo: 20,
+      Dname: "HR",
+      Loc: "San Francisco"
+    },
+    {
+      DeptNo: 30,
+      Dname: "Operations",
+      Loc: "Chicago"
+    },
+    {
+      DeptNo: 40,
+      Dname: "Gaming",
+      Loc: "Los Angeles"
+    },
+    {
+      DeptNo: 50,
+      Dname: "Finance",
+      Loc: "Dallas"
+    },
+    {
+      DeptNo: 60,
+      Dname: "Research",
+      Loc: "Boston"
+    }
+  ])
+  
+  Query 1
+
+  db.Emp.find({}, { _id: 0, Ename: 1, Sal: 1 })
+
+  Query 2
+
+  db.Emp.find({ Comm: { $exists: false } }, { _id: 0, Ename: 1, Job: 1, Sal: 1 })
+
+  Query 3
+
+  db.Emp.find({ Sal: { $gt: 1500 } }, { _id: 1, Ename: 1, Job: 1, Sal: 1 })
+
+  Query 4
+
+  db.Emp.find({ Job: { $nin: ["CLERK", "ANALYST", "SALESMAN"] } }, { _id: 0, Ename: 1, Job: 1 })
+
+  Query 5
+
+  db.Emp.find({ DeptNo: 20 }, { _id: 0, Ename: 1 })
